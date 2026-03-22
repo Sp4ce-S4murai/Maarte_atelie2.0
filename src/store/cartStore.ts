@@ -83,7 +83,7 @@ export function clearCart() {
 }
 
 // WhatsApp Checkout
-const WHATSAPP_NUMBER = '5554581206756'; // Replace with actual number
+const WHATSAPP_NUMBER = '5554981206756'; // Replace with actual number
 
 export function generateWhatsAppUrl(): string {
     const items = $cart.get();
