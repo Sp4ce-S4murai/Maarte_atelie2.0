@@ -94,11 +94,11 @@ export function generateWhatsAppUrl(): string {
     const itemsList = items
         .map(
             (item) =>
-                `▸ ${item.name} (x${item.quantity}) — R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}`
+                `  • ${item.quantity}x *${item.name}* (R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')})`
         )
         .join('\n');
 
-    const message = `🎀 *Pedido MaarteAtelie* 🎀\n\nOlá! Gostaria de fazer o seguinte pedido:\n\n${itemsList}\n\n💰 *Total: R$ ${total.toFixed(2).replace('.', ',')}*\n\nAguardo confirmação! 💕`;
+    const message = `*Oii!! Vim pelo site da MaarteAtelie!* \u2728\n\nAmei tudo e já marquei estes itens para a minha festa:\n\n${itemsList}\n\n*Valor Total do Pedido:* R$ ${total.toFixed(2).replace('.', ',')}\n\nPoderíamos dar seguimento nesse pedido? Mal posso esperar para ter tudo em mãos! \uD83D\uDC96`;
 
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
