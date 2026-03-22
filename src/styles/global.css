@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --color-oat-milk: #F2E0D2;
+  --color-red-wine: #9E1828;
+  --color-rose-quartz: #F9CBD6;
+  --color-blush: #F2AFBC;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --shadow-brutal: 4px 4px 0px #9E1828;
+  --shadow-brutal-sm: 2px 2px 0px #9E1828;
+  --shadow-brutal-lg: 6px 6px 0px #9E1828;
+  --shadow-brutal-hover: 6px 6px 0px #9E1828;
+}
+
+/* Base styles */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-oat-milk);
+  color: var(--color-red-wine);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+}
+
+/* Checkerboard pattern */
+.checkerboard {
+  background-image:
+    linear-gradient(45deg, var(--color-red-wine) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--color-red-wine) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--color-red-wine) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--color-red-wine) 75%);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+}
+
+.checkerboard-sm {
+  background-image:
+    linear-gradient(45deg, var(--color-red-wine) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--color-red-wine) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--color-red-wine) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--color-red-wine) 75%);
+  background-size: 24px 24px;
+  background-position: 0 0, 0 12px, 12px -12px, -12px 0px;
+}
+
+/* Brutalist button base */
+.btn-brutal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid var(--color-red-wine);
+  box-shadow: var(--shadow-brutal);
+  transition: all 150ms ease;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.btn-brutal:hover {
+  box-shadow: var(--shadow-brutal-hover);
+  transform: translate(-2px, -2px);
+}
+
+.btn-brutal:active {
+  box-shadow: none;
+  transform: translate(4px, 4px);
+}
+
+.btn-brutal-primary {
+  background-color: var(--color-red-wine);
+  color: var(--color-oat-milk);
+}
+
+.btn-brutal-secondary {
+  background-color: var(--color-rose-quartz);
+  color: var(--color-red-wine);
+}
+
+/* Scroll snap for carousel */
+.snap-carousel {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.snap-carousel > * {
+  scroll-snap-align: start;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-oat-milk);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-blush);
+  border: 1px solid var(--color-red-wine);
+}
