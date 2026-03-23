@@ -33,6 +33,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                     src={product.image}
                     alt={product.name}
                     loading="lazy"
+                    onError={(e) => { e.currentTarget.src = '/images/fallback-404.png'; }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 {/* Category badge */}
@@ -60,33 +61,44 @@ export default function ProductCard({ product }: ProductCardProps) {
 
                 {/* Price + Button */}
                 <div className="flex items-center justify-between gap-3 mt-auto">
-                    <span className="font-serif text-xl font-bold text-red-wine">
-                        R$ {product.price.toFixed(2).replace('.', ',')}
+                    <span className="font-serif text-xl font-bold text-red-wine flex flex-col">
+                        {product.variants && product.variants.length > 0 && <span className="text-xs uppercase tracking-wider text-red-wine/60 -mb-1">A partir de</span>}
+                        <span>R$ {product.price.toFixed(2).replace('.', ',')}</span>
                     </span>
-                    <button
-                        onClick={handleAdd}
-                        disabled={isAdding}
-                        className={`btn-brutal text-xs whitespace-nowrap ${isAdding
-                                ? 'btn-brutal-secondary !cursor-default'
-                                : 'btn-brutal-primary'
-                            }`}
-                    >
-                        {isAdding ? (
-                            <>
-                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                </svg>
-                                Adicionado!
-                            </>
-                        ) : (
-                            <>
-                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                                </svg>
-                                Adicionar
-                            </>
-                        )}
-                    </button>
+                    {product.variants && product.variants.length > 0 ? (
+                        <a
+                            onClick={(e) => e.stopPropagation()}
+                            href={`/produto/${product.slug}`}
+                            className="btn-brutal btn-brutal-primary text-xs whitespace-nowrap"
+                        >
+                            Ver Opções
+                        </a>
+                    ) : (
+                        <button
+                            onClick={handleAdd}
+                            disabled={isAdding}
+                            className={`btn-brutal text-xs whitespace-nowrap ${isAdding
+                                    ? 'btn-brutal-secondary !cursor-default'
+                                    : 'btn-brutal-primary'
+                                }`}
+                        >
+                            {isAdding ? (
+                                <>
+                                    <svg className="w-4 h-4 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Adicionado!
+                                </>
+                            ) : (
+                                <>
+                                    <svg className="w-4 h-4 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                                    </svg>
+                                    Adicionar
+                                </>
+                            )}
+                        </button>
+                    )}
                 </div>
             </div>
         </a>

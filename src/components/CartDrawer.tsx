@@ -72,6 +72,7 @@ export default function CartDrawer() {
                                     <img
                                         src={item.image}
                                         alt={item.name}
+                                        onError={(e) => { e.currentTarget.src = '/images/fallback-404.png'; }}
                                         className="w-full h-full object-cover"
                                     />
                                 </div>

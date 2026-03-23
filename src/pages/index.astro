@@ -10,7 +10,7 @@ import CartDrawer from '../components/CartDrawer.tsx';
 import { products, categoryLabels } from '../data/products';
 
 // Group products by category
-const categories = ['topper', 'lembrancinha', 'forminha'] as const;
+const categories = ['docinhos', 'topo-bolo'] as const;
 ---
 
 <Layout>
@@ -49,9 +49,8 @@ const categories = ['topper', 'lembrancinha', 'forminha'] as const;
               {/* Category header */}
               <div class="flex items-center gap-3 mb-6">
                 <h3 class="font-serif text-xl sm:text-2xl font-bold whitespace-nowrap">
-                  {cat === 'topper' && '🎂'} 
-                  {cat === 'lembrancinha' && '🎁'} 
-                  {cat === 'forminha' && '🧁'} 
+                  {cat === 'topo-bolo' && '🎂'} 
+                  {cat === 'docinhos' && '🧁'} 
                   {categoryLabels[cat]}
                 </h3>
                 <span class="flex-1 h-0.5 bg-red-wine/20"></span>
