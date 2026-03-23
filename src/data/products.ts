@@ -49,9 +49,8 @@ export const products: Product[] = [
         ],
         category: 'docinhos',
         specs: {
-            material: 'Papel Color Plus (premium)',
+            material: 'Papel offset 180g',
             tamanho: 'Base 3,5cm',
-            acabamento: 'Recorte especial unificado',
             personalizacao: 'Cores e modelos à sua escolha',
             prazoProducao: '5 a 7 dias úteis',
         },
@@ -82,9 +81,8 @@ export const products: Product[] = [
         ],
         category: 'docinhos',
         specs: {
-            material: 'Papel fotográfico/couché e palitinhos',
-            tamanho: 'Mini',
-            acabamento: 'Recorte digital em camadas',
+            material: 'Papel offset 180g e palito transparente',
+            tamanho: '3x3cm (figura) 8cm (palito)',
             personalizacao: 'Tema exclusivo da sua festa',
             prazoProducao: '5 a 7 dias úteis',
         },
@@ -109,10 +107,9 @@ export const products: Product[] = [
         image: '/images/topo-bolo/simples.png',
         category: 'topo-bolo',
         specs: {
-            material: 'Papel fotográfico premium 180g',
+            material: 'Papel offset 180g',
             tamanho: 'Padrão (Bolo 15 a 20cm)',
-            acabamento: 'Recorte especial (1-2 camadas)',
-            personalizacao: 'Nome e Idade',
+            personalizacao: 'Nome, Idade e Tema',
             prazoProducao: '3 a 5 dias úteis',
         },
         includes: [
@@ -131,9 +128,8 @@ export const products: Product[] = [
         image: '/images/topo-bolo/luxo.png',
         category: 'topo-bolo',
         specs: {
-            material: 'Papel color plus e cartolina lamicote especial',
+            material: 'Papel ofset 180g e camadas 3D',
             tamanho: 'Padrão (Bolo 15 a 20cm) + apliques',
-            acabamento: 'Recorte 3D em múltiplas camadas e palito transparente',
             personalizacao: 'Nome, Idade, Cores e Temas',
             prazoProducao: '5 a 7 dias úteis',
         },
