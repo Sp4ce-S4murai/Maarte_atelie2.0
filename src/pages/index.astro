@@ -43,7 +43,7 @@ const categories = ['docinhos', 'topo-bolo'] as const;
 
         <!-- Products by category -->
         {categories.map((cat) => {
-          const catProducts = products.filter((p) => p.category === cat);
+          const catProducts = products.filter((p) => p.category === cat && !p.hidden);
           return (
             <div class="mb-12 last:mb-0">
               {/* Category header */}

@@ -30,6 +30,7 @@ export interface Product {
     tags: string[];
     variants?: ProductVariant[];
     gallery?: string[];
+    hidden?: boolean;
 }
 
 export const products: Product[] = [
@@ -106,6 +107,7 @@ export const products: Product[] = [
         price: 25.00,
         image: '/images/topo-bolo/simples.png',
         category: 'topo-bolo',
+        hidden: true,
         specs: {
             material: 'Papel offset 180g',
             tamanho: 'Padrão (Bolo 15 a 20cm)',
@@ -125,7 +127,12 @@ export const products: Product[] = [
         description: 'Topo sofisticado em camadas 3D com fita banana e acabamentos premium.',
         longDescription: 'O Topo de Luxo 3D eleva a sua mesa de doces! Construído com 3 grandes camadas coladas em fita banana para dar profundidade, palitos transparentes resistentes e acabamentos manuais de super luxo.',
         price: 35.00,
-        image: '/images/topo-bolo/luxo.png',
+        image: '/images/topoluxo/topoluxo (1).png',
+        gallery: [
+            '/images/topoluxo/topoluxo (1).png',
+            '/images/topoluxo/topoluxo (2).png',
+            '/images/topoluxo/topoluxo (3).png',
+        ],
         category: 'topo-bolo',
         specs: {
             material: 'Papel ofset 180g e camadas 3D',
