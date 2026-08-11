@@ -7,10 +7,11 @@ import MotivosSection from '../components/MotivosSection.astro';
 import Footer from '../components/Footer.astro';
 import ProductCard from '../components/ProductCard.tsx';
 import CartDrawer from '../components/CartDrawer.tsx';
-import { products, categoryLabels } from '../data/products';
+import { products, categoryLabels, categoryEmoji } from '../data/products';
+import type { ProductCategory } from '../data/products';
 
 // Group products by category
-const categories = ['docinhos', 'topo-bolo'] as const;
+const categories: ProductCategory[] = ['docinhos', 'topo-bolo', 'kits'];
 ---
 
 <Layout>
@@ -44,14 +45,13 @@ const categories = ['docinhos', 'topo-bolo'] as const;
         <!-- Products by category -->
         {categories.map((cat) => {
           const catProducts = products.filter((p) => p.category === cat && !p.hidden);
+          if (catProducts.length === 0) return null;
           return (
             <div class="mb-12 last:mb-0">
               {/* Category header */}
               <div class="flex items-center gap-3 mb-6">
                 <h3 class="font-serif text-xl sm:text-2xl font-bold whitespace-nowrap">
-                  {cat === 'topo-bolo' && '🎂'} 
-                  {cat === 'docinhos' && '🧁'} 
-                  {categoryLabels[cat]}
+                  {categoryEmoji[cat]} {categoryLabels[cat]}
                 </h3>
                 <span class="flex-1 h-0.5 bg-red-wine/20"></span>
               </div>

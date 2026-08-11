@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { addToCart } from '../store/cartStore';
+import { categoryLabels, categoryEmoji } from '../data/products';
 import type { Product } from '../data/products';
 
 interface ProductCardProps {
@@ -38,9 +39,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 />
                 {/* Category badge */}
                 <span className="absolute top-3 left-3 bg-oat-milk border-2 border-red-wine px-2 py-0.5 text-xs font-bold uppercase tracking-wider shadow-brutal-sm">
-                    {product.category === 'topper' && '🎂 Topper'}
-                    {product.category === 'lembrancinha' && '🎁 Lembrancinha'}
-                    {product.category === 'forminha' && '🧁 Forminha'}
+                    {categoryEmoji[product.category]} {categoryLabels[product.category]}
                 </span>
                 {/* Ver detalhes overlay */}
                 <div className="absolute inset-0 bg-red-wine/0 group-hover:bg-red-wine/10 transition-colors duration-300 flex items-center justify-center">

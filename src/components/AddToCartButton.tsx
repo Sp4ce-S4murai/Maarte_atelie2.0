@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { useStore } from '@nanostores/react';
 import { addToCart } from '../store/cartStore';
+import { $selectedVariants, setSelectedVariant } from '../store/variantStore';
 
 interface ProductVariant {
     id: string;
     name: string;
     quantity: number;
     price: number;
+    includes?: string[];
 }
 
 interface AddToCartButtonProps {
@@ -21,9 +24,10 @@ interface AddToCartButtonProps {
 
 export default function AddToCartButton({ product, size = 'lg' }: AddToCartButtonProps) {
     const [isAdding, setIsAdding] = useState(false);
-    const [selectedVariantId, setSelectedVariantId] = useState<string>(
-        product.variants && product.variants.length > 0 ? product.variants[0].id : ''
-    );
+    const storedVariantId = useStore($selectedVariants)[product.id];
+    // Sem escolha registrada ainda, o primeiro kit é o padrão (igual no servidor e no cliente).
+    const selectedVariantId =
+        product.variants?.find((v) => v.id === storedVariantId)?.id ?? product.variants?.[0]?.id ?? '';
 
     const handleAdd = () => {
         let finalProduct = { id: product.id, name: product.name, price: product.price, image: product.image };
@@ -65,7 +69,7 @@ export default function AddToCartButton({ product, size = 'lg' }: AddToCartButto
                                         name={`variant-${product.id}`}
                                         value={v.id}
                                         checked={selectedVariantId === v.id}
-                                        onChange={() => setSelectedVariantId(v.id)}
+                                        onChange={() => setSelectedVariant(product.id, v.id)}
                                         className="w-4 h-4 text-red-wine border-red-wine focus:ring-red-wine bg-oat-milk"
                                     />
                                     <span className="font-bold text-red-wine">{v.name}</span>

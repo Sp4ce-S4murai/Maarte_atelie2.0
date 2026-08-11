@@ -9,11 +9,15 @@ export interface ProductSpecs {
     prazoProducao: string;
 }
 
+export type ProductCategory = 'topo-bolo' | 'docinhos' | 'kits';
+
 export interface ProductVariant {
     id: string;
     name: string;
     quantity: number;
     price: number;
+    /** Itens exclusivos desta opção, listados antes dos includes do produto. */
+    includes?: string[];
 }
 
 export interface Product {
@@ -24,7 +28,7 @@ export interface Product {
     longDescription: string;
     price: number;
     image: string;
-    category: 'topo-bolo' | 'docinhos';
+    category: ProductCategory;
     specs: ProductSpecs;
     includes: string[];
     tags: string[];
@@ -113,7 +117,7 @@ export const products: Product[] = [
             '/images/kit_personalizado/piramide.jpeg',
             '/images/kit_personalizado/sacolinha.jpeg',
         ],
-        category: 'docinhos',
+        category: 'kits',
         specs: {
             material: 'Papel offset 180g',
             tamanho: 'Milk, Cubo, Pirâmide e Sacolinha padrão',
@@ -121,16 +125,28 @@ export const products: Product[] = [
             prazoProducao: '5 a 7 dias úteis',
         },
         includes: [
-            'Embalagens Milk, Cubo, Pirâmides e Sacolinhas personalizadas',
+            'Todos os itens personalizados com o tema da sua festa',
             'Produção artesanal com muito carinho',
             'Embalagem protetora',
         ],
         tags: ['kit', 'doce', 'personalizado'],
         variants: [
-            { id: '12-itens', name: '12 itens (3 Milk + 3 Cubo + 3 Pirâmides + 3 Sacolinhas)', quantity: 12, price: 28.50 },
-            { id: '20-itens', name: '20 itens (5 Milk + 5 Cubo + 5 Pirâmides + 5 Sacolinhas)', quantity: 20, price: 47.50 },
-            { id: '30-itens', name: '30 itens (8 Milk + 8 Cubo + 7 Pirâmides + 7 Sacolinhas)', quantity: 30, price: 71.00 },
-            { id: '40-itens', name: '40 itens (10 Milk + 10 Cubo + 10 Pirâmides + 10 Sacolinhas)', quantity: 40, price: 95.00 },
+            {
+                id: '12-itens', name: 'Kit 12 itens', quantity: 12, price: 28.50,
+                includes: ['3 Caixinhas Milk', '3 Caixinhas Cubo', '3 Pirâmides', '3 Sacolinhas'],
+            },
+            {
+                id: '20-itens', name: 'Kit 20 itens', quantity: 20, price: 47.50,
+                includes: ['5 Caixinhas Milk', '5 Caixinhas Cubo', '5 Pirâmides', '5 Sacolinhas'],
+            },
+            {
+                id: '30-itens', name: 'Kit 30 itens', quantity: 30, price: 71.00,
+                includes: ['8 Caixinhas Milk', '8 Caixinhas Cubo', '7 Pirâmides', '7 Sacolinhas'],
+            },
+            {
+                id: '40-itens', name: 'Kit 40 itens', quantity: 40, price: 95.00,
+                includes: ['10 Caixinhas Milk', '10 Caixinhas Cubo', '10 Pirâmides', '10 Sacolinhas'],
+            },
         ]
     },
     {
@@ -183,9 +199,16 @@ export const products: Product[] = [
     }
 ];
 
-export const categoryLabels: Record<string, string> = {
+export const categoryLabels: Record<ProductCategory, string> = {
     'topo-bolo': 'Topo de Bolo',
     docinhos: 'Docinhos',
+    kits: 'Kits Personalizados',
+};
+
+export const categoryEmoji: Record<ProductCategory, string> = {
+    'topo-bolo': '🎂',
+    docinhos: '🧁',
+    kits: '🎁',
 };
 
 export function getProductBySlug(slug: string): Product | undefined {
