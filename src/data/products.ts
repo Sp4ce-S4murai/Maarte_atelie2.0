@@ -99,6 +99,41 @@ export const products: Product[] = [
         ]
     },
     {
+        id: 'kit-personalizado',
+        slug: 'kit-personalizado',
+        name: 'Kit Personalizado de Docinhos',
+        description: 'Kit completo com Milk, Cubo, Pirâmides e Sacolinhas personalizados para sua festa.',
+        longDescription: 'O Kit Personalizado reúne os quatro queridinhos da mesa de doces: Milk, Cubo, Pirâmides e Sacolinhas, todos combinando com o tema da sua festa. Escolha o kit ideal para o tamanho da sua celebração e aproveite nossos descontos progressivos!',
+        price: 28.50,
+        image: '/images/kit_personalizado/kit.jpeg',
+        gallery: [
+            '/images/kit_personalizado/kit.jpeg',
+            '/images/kit_personalizado/milk.jpeg',
+            '/images/kit_personalizado/cubo.jpeg',
+            '/images/kit_personalizado/piramide.jpeg',
+            '/images/kit_personalizado/sacolinha.jpeg',
+        ],
+        category: 'docinhos',
+        specs: {
+            material: 'Papel offset 180g',
+            tamanho: 'Milk, Cubo, Pirâmide e Sacolinha padrão',
+            personalizacao: 'Cores e tema à sua escolha',
+            prazoProducao: '5 a 7 dias úteis',
+        },
+        includes: [
+            'Embalagens Milk, Cubo, Pirâmides e Sacolinhas personalizadas',
+            'Produção artesanal com muito carinho',
+            'Embalagem protetora',
+        ],
+        tags: ['kit', 'doce', 'personalizado'],
+        variants: [
+            { id: '12-itens', name: '12 itens (3 Milk + 3 Cubo + 3 Pirâmides + 3 Sacolinhas)', quantity: 12, price: 28.50 },
+            { id: '20-itens', name: '20 itens (5 Milk + 5 Cubo + 5 Pirâmides + 5 Sacolinhas)', quantity: 20, price: 47.50 },
+            { id: '30-itens', name: '30 itens (8 Milk + 8 Cubo + 7 Pirâmides + 7 Sacolinhas)', quantity: 30, price: 71.00 },
+            { id: '40-itens', name: '40 itens (10 Milk + 10 Cubo + 10 Pirâmides + 10 Sacolinhas)', quantity: 40, price: 95.00 },
+        ]
+    },
+    {
         id: 'topo-bolo-simples',
         slug: 'topo-bolo-simples',
         name: 'Topo de Bolo Simples',
